@@ -149,7 +149,7 @@ class PDFWriter {
   ): Promise<SerializationInfo> {
     const header = PDFHeader.forVersion(1, 7);
 
-    let size = this.context.pdfFileDetails.pdfSize;
+    let size = this.snapshot.pdfSize;
     if (!incremental) {
       size += header.sizeInBytes() + 1;
     }
@@ -174,13 +174,13 @@ class PDFWriter {
     size += xref.sizeInBytes() + 1; // '\n'
 
     const trailerDict = PDFTrailerDict.of(
-      this.createTrailerDict(this.context.pdfFileDetails.prevStartXRef),
+      this.createTrailerDict(this.snapshot.prevStartXRef),
     );
     size += trailerDict.sizeInBytes() + 2; // '\n\n'
 
     const trailer = PDFTrailer.forLastCrossRefSectionOffset(xrefOffset);
     size += trailer.sizeInBytes();
-    size -= this.context.pdfFileDetails.pdfSize;
+    size -= this.snapshot.pdfSize;
 
     return { size, header, indirectObjects, xref, trailerDict, trailer };
   }

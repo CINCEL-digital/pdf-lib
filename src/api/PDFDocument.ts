@@ -1307,13 +1307,11 @@ export default class PDFDocument {
     const saveOptions: SaveOptions = {
       ...options,
       addDefaultPage: false,
-      updateFieldAppearances: false,
+      updateFieldAppearances: false
     };
     await this.prepareForSave(saveOptions);
 
-    const Writer = this.context.pdfFileDetails.useObjectStreams
-      ? PDFStreamWriter
-      : PDFWriter;
+    const Writer = this.context.pdfFileDetails.useObjectStreams ? PDFStreamWriter : PDFWriter;
     return Writer.forContextWithSnapshot(
       this.context,
       objectsPerTick,
@@ -1360,7 +1358,7 @@ export default class PDFDocument {
 
   takeSnapshot(options: TakeSnapshotOptions): DocumentSnapshot {
     const { pageIndex } = options;
-
+    
     assertIs(pageIndex, 'pageIndex', ['number']);
 
     const page = this.getPage(pageIndex);
@@ -1385,7 +1383,8 @@ export default class PDFDocument {
     return new IncrementalDocumentSnapshot(
       this.context.largestObjectNumber,
       indirectObjects,
-    );
+      this.context.pdfFileDetails.pdfSize,
+      this.context.pdfFileDetails.prevStartXRef);
   }
 
   private async prepareForSave(options: SaveOptions): Promise<void> {

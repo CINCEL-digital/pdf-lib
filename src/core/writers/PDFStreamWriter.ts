@@ -65,7 +65,7 @@ class PDFStreamWriter extends PDFWriter {
 
     const header = PDFHeader.forVersion(1, 7);
 
-    let size = this.context.pdfFileDetails.pdfSize;
+    let size = this.snapshot.pdfSize;
     if (!incremental) {
       size += header.sizeInBytes() + 1;
     }
@@ -135,10 +135,10 @@ class PDFStreamWriter extends PDFWriter {
 
     const xrefStreamRef = PDFRef.of(objectNumber++);
     xrefStream.dict.set(PDFName.of('Size'), PDFNumber.of(objectNumber));
-    if (this.context.pdfFileDetails.prevStartXRef) {
+    if (this.snapshot.prevStartXRef) {
       xrefStream.dict.set(
         PDFName.of('Prev'),
-        PDFNumber.of(this.context.pdfFileDetails.prevStartXRef),
+        PDFNumber.of(this.snapshot.prevStartXRef),
       );
     }
     xrefStream.addUncompressedEntry(xrefStreamRef, size);
@@ -149,7 +149,7 @@ class PDFStreamWriter extends PDFWriter {
 
     const trailer = PDFTrailer.forLastCrossRefSectionOffset(xrefOffset);
     size += trailer.sizeInBytes();
-    size -= this.context.pdfFileDetails.pdfSize;
+    size -= this.snapshot.pdfSize;
 
     return { size, header, indirectObjects: uncompressedObjects, trailer };
   }
