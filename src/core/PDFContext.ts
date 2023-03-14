@@ -77,7 +77,7 @@ class PDFContext {
     this.pdfFileDetails = {
       pdfSize: 0,
       prevStartXRef: 0,
-      useObjectStreams: false
+      useObjectStreams: false,
     };
   }
 
