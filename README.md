@@ -236,9 +236,6 @@ const pdfDoc = await PDFDocument.load(existingPdfBytes)
 // Take a snapshot of the document, for first page
 const snapshot = pdfDoc.takeSnapshot({ pageIndex: 0 });
 
-// Embed the Helvetica font
-const timesRomanFont = await pdfDoc.embedFont(StandardFonts.TimesRoman)
-
 // Get the first page of the document
 const pages = pdfDoc.getPages()
 const firstPage = pages[0]
@@ -250,8 +247,7 @@ const { width, height } = firstPage.getSize()
 firstPage.drawText('Incremental saving is also awesome!', {
   x: 50,
   y: 4 * fontSize,
-  size: fontSize,
-  font: timesRomanFont
+  size: fontSize
 })
 
 // Serialize the PDFDocument to bytes (a Uint8Array)
