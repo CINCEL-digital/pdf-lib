@@ -240,9 +240,6 @@ const snapshot = pdfDoc.takeSnapshot({ pageIndex: 0 });
 const pages = pdfDoc.getPages()
 const firstPage = pages[0]
 
-// Get the width and height of the first page
-const { width, height } = firstPage.getSize()
-
 // Draw a string of text diagonally across the first page
 firstPage.drawText('Incremental saving is also awesome!', {
   x: 50,
