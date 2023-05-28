@@ -1,5 +1,5 @@
 {
-  "name": "pdf-lib",
+  "name": "pdf-lib-incremental-save",
   "version": "1.17.1",
   "description": "Create and modify PDF files with JavaScript",
   "author": "Andrew Dillon <andrew.dillon.j@gmail.com>",
