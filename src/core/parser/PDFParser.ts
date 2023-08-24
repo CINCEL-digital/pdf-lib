@@ -173,7 +173,10 @@ class PDFParser extends PDFObjectParser {
     } else {
       this.context.assign(ref, object);
     }
-
+    if (ref.objectNumber > this.context.largestObjectNumber) {
+      this.context.largestObjectNumber = ref.objectNumber;
+    }
+    
     return ref;
   }
 

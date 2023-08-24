@@ -1363,15 +1363,15 @@ export default class PDFDocument {
 
     assertIs(pageIndex, 'pageIndex', ['number']);
 
-    const page = this.getPage(pageIndex);
-    const acroFormRef = this.context.getObjectRef(
-      this.getForm().acroForm.dict,
-    )!;
+    // const page = this.getPage(pageIndex);
+    // const acroFormRef = this.context.getObjectRef(
+    // this.getForm().acroForm.dict,
+    // )!;
     const catalogRef = this.context.getObjectRef(this.catalog)!;
 
     const indirectObjects: number[] = [
-      page.ref.objectNumber,
-      acroFormRef.objectNumber,
+      // page.ref.objectNumber,
+      // acroFormRef.objectNumber,
       catalogRef.objectNumber,
     ];
     if (this.context.pdfFileDetails.useObjectStreams) {
