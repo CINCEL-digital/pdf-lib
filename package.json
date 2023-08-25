@@ -1,8 +1,8 @@
 {
-  "name": "pdf-lib",
-  "version": "1.17.1",
-  "description": "Create and modify PDF files with JavaScript",
-  "author": "Andrew Dillon <andrew.dillon.j@gmail.com>",
+  "name": "@cincel.digital/pdf-lib",
+  "version": "0.1.0",
+  "description": "fix some problems of Remdra's add incremental save functionality to pdf-lib (1.17.1).",
+  "author": "Hector Ornelas <hector@cincel.digital>",
   "contributors": [
     "jerp (https://github.com/jerp)",
     "Greg Bacchus (https://github.com/gregbacchus)",
@@ -30,7 +30,8 @@
     "Brent McSharry (https://github.com/mcshaz)",
     "Tim Knapp (https://github.com/duffyd)",
     "Ching Chang (https://github.com/ChingChang9)",
-    "Remus DRAICA (https://github.com/remdra)"
+    "Remus DRAICA (https://github.com/remdra)",
+    "Hector Ornelas (https://github.com/ornelash)"
   ],
   "scripts": {
     "release:latest": "yarn publish --tag latest && yarn pack && yarn release:tag",
@@ -120,11 +121,8 @@
   },
   "license": "MIT",
   "private": false,
-  "homepage": "https://pdf-lib.js.org",
-  "repository": "git+https://github.com/Hopding/pdf-lib.git",
-  "bugs": {
-    "url": "https://github.com/Hopding/pdf-lib/issues"
-  },
+  "homepage": "",
+  "repository": "git+https://github.com/remdra/pdf-lib-incremental-save",
   "keywords": [
     "pdf-lib",
     "pdf",
@@ -137,6 +135,7 @@
     "editing",
     "typescript",
     "javascript",
-    "library"
+    "library",
+    "incremental"
   ]
 }
